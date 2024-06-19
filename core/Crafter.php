@@ -2,6 +2,8 @@
 
 namespace Minamell\Minamell;
 
+use Minamell\Minamell\Commands\Server;
+
 class Crafter
 {
     protected $commands = [];
@@ -15,6 +17,7 @@ class Crafter
         $this->registerCommand('make:migration', [$this, 'makeMigration']);
         $this->registerCommand('make:model', [$this, 'makeModel']);
         $this->registerCommand('make:view', [$this, 'makeView']);
+        $this->registerCommand('serve', [$this, 'serve']);
     }
     /**
      * @return void
@@ -240,6 +243,12 @@ class Crafter
         file_put_contents("view/$name.php", $template);
 
         echo "View '$name' created successfully in 'view/$name.php'.\n";
+    }
+
+    private function serve(): void
+    {
+        $server = new Server();
+        $server->start();
     }
 }
 
