@@ -1,0 +1,12 @@
+{
+    "name": "minamell/minamell",
+    "type": "library",
+    "license": "MIT",
+    "autoload": {
+        "psr-4": {
+            "Minamell\\Minamell\\": "core/"
+        }
+    },
+    "minimum-stability": "dev",
+    "require": {}
+}
