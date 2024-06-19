@@ -247,8 +247,7 @@ class Crafter
 
     private function serve(): void
     {
-        $server = new Server();
-        $server->start();
+        (new Server())->start();
     }
 }
 
