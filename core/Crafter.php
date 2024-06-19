@@ -6,7 +6,7 @@ class Crafter
 {
     protected $commands = [];
 
-    public function __construct()
+    private function __construct()
     {
         $this->registerCommand('list', [$this, 'listCommands']);
         $this->registerCommand('make:controller', [$this, 'makeController']);
@@ -29,12 +29,12 @@ class Crafter
         }
     }
 
-    public function registerCommand($name, callable $callback)
+    private function registerCommand($name, callable $callback)
     {
         $this->commands[$name] = $callback;
     }
 
-    public function listCommands()
+    private function listCommands()
     {
         echo "Available commands:\n";
         foreach (array_keys($this->commands) as $command) {
@@ -42,7 +42,7 @@ class Crafter
         }
     }
 
-    public function makeController($args)
+    private function makeController($args)
     {
         $name = $args[0] ?? '';
 
@@ -72,7 +72,7 @@ class Crafter
         $this->listCommands();
     }
 
-    public function migrateUp($args)
+    private function migrateUp($args)
     {
         $name = $args[0] ?? '';
 
@@ -90,7 +90,7 @@ class Crafter
         $migrations->up($name);
     }
 
-    public function migrateDown($args)
+    private function migrateDown($args)
     {
         $name = $args[0] ?? '';
 
@@ -108,7 +108,7 @@ class Crafter
         $migrations->down($name);
     }
 
-    public function makeMigration($args)
+    private function makeMigration($args)
     {
         $name = $args[0] ?? '';
 
@@ -141,7 +141,7 @@ class Crafter
         echo "Migration created successfully.\n";
     }
 
-    public function makeModel($args)
+    private function makeModel($args)
     {
         $name = $args[0] ?? '';
 
@@ -166,7 +166,7 @@ class Crafter
 
         class $className extends Model
         {
-            public static string \$table = '$name';
+            private static string \$table = '$name';
         }
         EOT;
 
@@ -175,7 +175,7 @@ class Crafter
         echo "Model '$className' created successfully in 'app/Models/$className.php'.\n";
     }
 
-    public function makeView($args)
+    private function makeView($args)
     {
         $name = $args[0] ?? '';
 

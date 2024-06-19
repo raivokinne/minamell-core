@@ -1,5 +1,7 @@
 <?php
 
+namespace Minamell\Minamell;
+
 function dd(...$args)
 {
     echo '<pre>';
