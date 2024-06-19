@@ -6,7 +6,7 @@ class Crafter
 {
     protected $commands = [];
 
-    private function __construct()
+    public function __construct()
     {
         $this->registerCommand('list', [$this, 'listCommands']);
         $this->registerCommand('make:controller', [$this, 'makeController']);
