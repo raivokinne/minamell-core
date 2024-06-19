@@ -1,6 +1,6 @@
 <?php
 
-namespace Core\Middleware;
+namespace Minamell\Minamell\Middleware;
 
 class Middleware
 {

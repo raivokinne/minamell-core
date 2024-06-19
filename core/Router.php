@@ -1,8 +1,8 @@
 <?php
 
-namespace Core;
+namespace Minamell\Minamell;
 
-use Core\Middleware\Middleware;
+use Minamell\Minamell\Middleware;
 
 class Router
 {
