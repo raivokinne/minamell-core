@@ -63,7 +63,7 @@ class Crafter
             return;
         }
 
-        if (file_exists("app/controllers/$name.php")) {
+        if (file_exists("app/Http/Controllers/$name.php")) {
             echo "File already exists.\n";
             return;
         }
@@ -71,7 +71,7 @@ class Crafter
         $template = <<<EOT
         <?php
 
-        namespace App\Controllers;
+        namespace App\Http\Controllers;
 
         use function Minamell\Minamell\view;
 
@@ -81,7 +81,7 @@ class Crafter
 
         EOT;
 
-        file_put_contents("app/controllers/$name.php", $template);
+        file_put_contents("app/Http/Controllers/$name.php", $template);
 
         echo "Controller created successfully.\n";
 
