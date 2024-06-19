@@ -16,8 +16,11 @@ class Crafter
         $this->registerCommand('make:model', [$this, 'makeModel']);
         $this->registerCommand('make:view', [$this, 'makeView']);
     }
-
-    public function run($argv)
+    /**
+     * @return void
+     * @param mixed $argv
+     */
+    public function run($argv): void
     {
         $command = $argv[1] ?? 'list';
 
@@ -28,21 +31,30 @@ class Crafter
             $this->listCommands();
         }
     }
-
-    private function registerCommand($name, callable $callback)
+    /**
+     * @return void
+     * @param mixed $name
+     * @param callable(): mixed $callback
+     */
+    private function registerCommand($name, callable $callback): void
     {
         $this->commands[$name] = $callback;
     }
-
-    private function listCommands()
+    /**
+     * @return void
+     */
+    private function listCommands(): void
     {
         echo "Available commands:\n";
         foreach (array_keys($this->commands) as $command) {
             echo " - $command\n";
         }
     }
-
-    private function makeController($args)
+    /**
+     * @return void
+     * @param mixed $args
+     */
+    private function makeController($args): void
     {
         $name = $args[0] ?? '';
 
@@ -59,6 +71,10 @@ class Crafter
         $template = <<<EOT
         <?php
 
+        namespace App\Controllers;
+
+        use function Minamell\Minamell\view;
+
         view('$name', [
             'title' => '$name',
         ]);
@@ -71,8 +87,11 @@ class Crafter
 
         $this->listCommands();
     }
-
-    private function migrateUp($args)
+    /**
+     * @return void
+     * @param mixed $args
+     */
+    private function migrateUp($args): void
     {
         $name = $args[0] ?? '';
 
@@ -89,8 +108,11 @@ class Crafter
         $migrations = new Migrations();
         $migrations->up($name);
     }
-
-    private function migrateDown($args)
+    /**
+     * @return void
+     * @param mixed $args
+     */
+    private function migrateDown($args): void
     {
         $name = $args[0] ?? '';
 
@@ -107,8 +129,11 @@ class Crafter
         $migrations = new Migrations();
         $migrations->down($name);
     }
-
-    private function makeMigration($args)
+    /**
+     * @return void
+     * @param mixed $args
+     */
+    private function makeMigration($args): void
     {
         $name = $args[0] ?? '';
 
@@ -140,8 +165,11 @@ class Crafter
 
         echo "Migration created successfully.\n";
     }
-
-    private function makeModel($args)
+    /**
+     * @return void
+     * @param mixed $args
+     */
+    private function makeModel($args): void
     {
         $name = $args[0] ?? '';
 
@@ -174,8 +202,11 @@ class Crafter
 
         echo "Model '$className' created successfully in 'app/Models/$className.php'.\n";
     }
-
-    private function makeView($args)
+    /**
+     * @return void
+     * @param mixed $args
+     */
+    private function makeView($args): void
     {
         $name = $args[0] ?? '';
 

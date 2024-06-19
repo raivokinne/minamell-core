@@ -4,7 +4,11 @@ namespace Minamell\Minamell;
 
 class Migrations
 {
-    public static function up($name)
+    /**
+     * @return bool
+     * @param mixed $name
+     */
+    public static function up($name): bool
     {
         $db = App::container()->resolve(Database::class);
 
@@ -14,8 +18,11 @@ class Migrations
 
         return true;
     }
-
-    public static function down($name)
+    /**
+     * @return bool
+     * @param mixed $name
+     */
+    public static function down($name): bool
     {
         $db = App::container()->resolve(Database::class);
 

@@ -5,8 +5,11 @@ namespace Minamell\Minamell;
 class App
 {
     protected static $container;
-
-    public static function setContainer($container)
+    /**
+     * @return void
+     * @param mixed $container
+     */
+    public static function setContainer($container): void
     {
         self::$container = $container;
     }
