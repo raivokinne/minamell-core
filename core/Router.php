@@ -2,7 +2,7 @@
 
 namespace Minamell\Minamell;
 
-use Minamell\Minamell\Middleware;
+use Minamell\Minamell\Middleware\Middleware;
 
 class Router
 {
@@ -104,7 +104,7 @@ class Router
 
                     Middleware::resolve($route['middleware'] ?? null);
 
-                    $controllerPath = BASE_PATH . '/app/controllers/' . $route['controller'];
+                    $controllerPath = BASE_PATH . '/app/Http/Controllers/' . $route['controller'];
                     if (file_exists($controllerPath)) {
                         extract($parameters);
                         require $controllerPath;
@@ -129,8 +129,6 @@ class Router
     public function abort($code = 404): void
     {
         http_response_code($code);
-
-        require BASE_PATH . 'view/errors/' . $code . '.php';
 
         die();
     }
