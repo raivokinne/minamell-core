@@ -76,12 +76,9 @@ class Crafter
 
         namespace App\Http\Controllers;
 
-        use function Minamell\Minamell\view;
+        use Minamell\Minamell\Functions;
 
-        view('$name', [
-            'title' => '$name',
-        ]);
-
+        Functions::dd('Hello, World!');
         EOT;
 
         file_put_contents("app/Http/Controllers/$name.php", $template);

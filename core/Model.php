@@ -6,6 +6,38 @@ class Model extends Database
 {
     protected static string $table = '';
     protected static $statement = null;
+
+    public function hasMany(Model $model): Model
+    {
+        $sql = "SELECT * FROM " . static::$table . " INNER JOIN " . $model::$table . " ON " . static::$table . "." . $model::$table . "_id = " . $model::$table . ".id";
+        self::$statement = self::$connection->prepare($sql);
+        self::$statement->execute();
+        return new static;
+    }
+
+    public function belongsTo(Model $model): Model
+    {
+        $sql = "SELECT * FROM " . static::$table . " INNER JOIN " . $model::$table . " ON " . static::$table . "." . $model::$table . "_id = " . $model::$table . ".id";
+        self::$statement = self::$connection->prepare($sql);
+        self::$statement->execute();
+        return new static;
+    }
+
+    public function hasOne(Model $model): Model
+    {
+        $sql = "SELECT * FROM " . static::$table . " INNER JOIN " . $model::$table . " ON " . static::$table . "." . $model::$table . "_id = " . $model::$table . ".id";
+        self::$statement = self::$connection->prepare($sql);
+        self::$statement->execute();
+        return new static;
+    }
+
+    public function belongsToMany(Model $model): Model
+    {
+        $sql = "SELECT * FROM " . static::$table . " INNER JOIN " . $model::$table . " ON " . static::$table . "." . $model::$table . "_id = " . $model::$table . ".id";
+        self::$statement = self::$connection->prepare($sql);
+        self::$statement->execute();
+        return new static;
+    }
     /**
      * @return Model
      */
