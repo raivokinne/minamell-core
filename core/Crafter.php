@@ -76,7 +76,7 @@ class Crafter
 		$template = <<<EOT
         <?php
 
-        namespace App\Htpp\Controllers;
+        namespace App\Http\Controllers;
 
         use function Minamell\Minamell\view;
 
