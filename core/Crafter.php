@@ -66,27 +66,17 @@ class Crafter
 			return;
 		}
 
-		$className = ucfirst($name);
-
-		if (file_exists("app/Http/Controllers/$className.php")) {
+		if (file_exists("app/controllers/$name.php")) {
 			echo "File already exists.\n";
 			return;
 		}
 
 		$template = <<<EOT
         <?php
-
-        namespace App\Http\Controllers;
-
         use function Minamell\Minamell\view;
-
-        class $className extends Controller
-        {
-            //
-        }
         EOT;
 
-		file_put_contents("app/Http/Controllers/$className.php", $template);
+		file_put_contents("app/controllers/$name.php", $template);
 
 		echo "Controller created successfully.\n";
 	}
