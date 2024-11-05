@@ -7,6 +7,6 @@
             "Minamell\\Minamell\\": "core/"
         }
     },
-    "minimum-stability": "dev",
+    "minimum-stability": "stable",
     "require": {}
 }
