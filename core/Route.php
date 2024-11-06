@@ -4,7 +4,7 @@ namespace Minamell\Minamell;
 
 use Minamell\Minamell\Middleware\Middleware;
 
-class Router
+class Route
 {
 	protected static $routes = [];
 
@@ -14,9 +14,9 @@ class Router
 	 * @param string $method
 	 * @param string $url
 	 * @param mixed $controller
-	 * @return Router
+	 * @return Route
 	 */
-	protected static function add(string $method, string $url, $controller): Router
+	protected static function add(string $method, string $url, $controller): Route
 	{
 		self::$routes[] = [
 			'method' => $method,
@@ -32,9 +32,9 @@ class Router
 	 *
 	 * @param string $url
 	 * @param mixed $controller
-	 * @return Router
+	 * @return Route
 	 */
-	public static function get(string $url, $controller): Router
+	public static function get(string $url, $controller): Route
 	{
 		return self::add('GET', $url, $controller);
 	}
@@ -44,9 +44,9 @@ class Router
 	 *
 	 * @param string $url
 	 * @param mixed $controller
-	 * @return Router
+	 * @return Route
 	 */
-	public static function post(string $url, $controller): Router
+	public static function post(string $url, $controller): Route
 	{
 		return self::add('POST', $url, $controller);
 	}
@@ -56,9 +56,9 @@ class Router
 	 *
 	 * @param string $url
 	 * @param mixed $controller
-	 * @return Router
+	 * @return Route
 	 */
-	public static function put(string $url, $controller): Router
+	public static function put(string $url, $controller): Route
 	{
 		return self::add('PUT', $url, $controller);
 	}
@@ -68,9 +68,9 @@ class Router
 	 *
 	 * @param string $url
 	 * @param mixed $controller
-	 * @return Router
+	 * @return Route
 	 */
-	public static function patch(string $url, $controller): Router
+	public static function patch(string $url, $controller): Route
 	{
 		return self::add('PATCH', $url, $controller);
 	}
@@ -80,9 +80,9 @@ class Router
 	 *
 	 * @param string $url
 	 * @param mixed $controller
-	 * @return Router
+	 * @return Route
 	 */
-	public static function delete(string $url, $controller): Router
+	public static function delete(string $url, $controller): Route
 	{
 		return self::add('DELETE', $url, $controller);
 	}
@@ -91,9 +91,9 @@ class Router
 	 * Attach a middleware to the last added route.
 	 *
 	 * @param mixed $key
-	 * @return Router
+	 * @return Route
 	 */
-	public static function only($key): Router
+	public static function only($key): Route
 	{
 		self::$routes[array_key_last(self::$routes)]['middleware'] = $key;
 		return new static;
