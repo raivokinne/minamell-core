@@ -11,6 +11,6 @@ class View
     public static function render($view, $data = []): void
 	{
 		extract($data);
-		require __DIR__ . '../../../view/' . $view . '.php';
+		require __DIR__ . '/../../../view/' . $view . '.php';
 	}
 }
